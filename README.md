@@ -4,14 +4,14 @@
 
 ## Supported tags and respective `Dockerfile` links
 
-`1.29.7-stretch` _(1.29.7/stretch/Dockerfile)_
+* `1.29.7-stretch`, `1.29.7` _(1.29.7/stretch/Dockerfile)_
 
 ## Image Variants
 
-### `bxggs/rvm:<version>-stretch`
+### `bxggs/rvm:<version>`, `bxggs/rvm:<version>-stretch`
 
 * Uses Debian Stretch as its base image
-* Downloads a tarball of the release specified by `<version>` and installs it by RVM's official [offline install docs][offline]
+* Uses a tarball of the release specified by `<version>` and installs it as specified in RVM's official [offline install docs][offline]
 
 ## Links
 
