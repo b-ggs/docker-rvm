@@ -15,8 +15,6 @@ RUN curl -sSL https://github.com/rvm/rvm/archive/${RVM_VERSION}.tar.gz -o /tmp/r
   && ./install --auto-dotfiles \
   && rm -rf /tmp/*
 
-SHELL ["/bin/bash", "-l", "-c"]
+RUN /bin/bash -lc rvm requirements
 
-RUN rvm requirements
-
-CMD ["/bin/bash", "-l"]
+RUN echo 'source /usr/local/rvm/scripts/rvm' >> $HOME/.bashrc
