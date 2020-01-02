@@ -4,7 +4,8 @@
 
 ## Supported tags and respective `Dockerfile` links
 
-* `1.29.8-bionic` _(1.29.7/bionic/Dockerfile)_
+* `1.29.9-bionic` _(1.29.9/bionic/Dockerfile)_
+* `1.29.8-bionic` _(1.29.8/bionic/Dockerfile)_
 * `1.29.7-stretch` _(1.29.7/stretch/Dockerfile)_
 
 ## Image Variants
