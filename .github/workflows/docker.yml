@@ -1,0 +1,35 @@
+name: Docker Image CI
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    env:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+      DOCKER_REPOSITORY: rvm
+    strategy:
+      matrix:
+        DOCKER_TAG:
+          - 1.29.8-bionic
+          - 1.29.9-bionic
+          - 1.29.10-bionic
+        include:
+          - DOCKER_TAG: 1.29.8-bionic
+            RELATIVE_PATH: 1.29.8/bionic
+          - DOCKER_TAG: 1.29.9-bionic
+            RELATIVE_PATH: 1.29.9/bionic
+          - DOCKER_TAG: 1.29.10-bionic
+            RELATIVE_PATH: 1.29.10/bionic
+    steps:
+      - uses: actions/checkout@v2
+      - run: docker build -t "$DOCKERHUB_USERNAME/$DOCKER_REPOSITORY:$DOCKER_TAG" "$RELATIVE_PATH"
+        env:
+          DOCKER_TAG: ${{ matrix.DOCKER_TAG }}
+          RELATIVE_PATH: ${{ matrix.RELATIVE_PATH }}
+      - run: echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+      - run: docker push "$DOCKERHUB_USERNAME/$DOCKER_REPOSITORY:$DOCKER_TAG"
+        env:
+          DOCKER_TAG: ${{ matrix.DOCKER_TAG }}
