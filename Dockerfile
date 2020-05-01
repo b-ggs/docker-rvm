@@ -1,8 +1,8 @@
-FROM buildpack-deps:bionic
+ARG IMAGE_BASE
+FROM $IMAGE_BASE
 
-ENV RVM_VERSION=1.29.9
-
-RUN curl -sSL https://github.com/rvm/rvm/archive/${RVM_VERSION}.tar.gz -o /tmp/rvm-stable.tar.gz \
+ARG RVM_VERSION
+RUN curl -sSL "https://github.com/rvm/rvm/archive/${RVM_VERSION}.tar.gz" -o /tmp/rvm-stable.tar.gz \
   && mkdir -p /tmp/rvm \
   && cd /tmp/rvm \
   && tar --strip-components=1 -xzf /tmp/rvm-stable.tar.gz \
