@@ -1,5 +1,7 @@
 name: Build and push to Docker Hub
 on:
+  schedule:
+    - cron: 0 0 1 * *
   push:
     branches:
       - master
@@ -27,6 +29,12 @@ jobs:
           - DOCKER_TAG: 1.29.12-focal
             IMAGE_BASE: buildpack-deps:focal
             RVM_VERSION: 1.29.12
+          - DOCKER_TAG: 1.29.12-bionic
+            IMAGE_BASE: buildpack-deps:bionic
+            RVM_VERSION: 1.29.12
+          - DOCKER_TAG: 1.29.11-focal
+            IMAGE_BASE: buildpack-deps:focal
+            RVM_VERSION: 1.29.11
           - DOCKER_TAG: 1.29.11-bionic
             IMAGE_BASE: buildpack-deps:bionic
             RVM_VERSION: 1.29.11
