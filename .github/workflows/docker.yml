@@ -13,6 +13,10 @@ jobs:
     strategy:
       matrix:
         DOCKER_TAG:
+          - 1.29.12-focal
+          - 1.29.12-bionic
+          - 1.29.11-focal
+          - 1.29.11-bionic
           - 1.29.10-focal
           - 1.29.10-bionic
           - 1.29.9-focal
@@ -20,6 +24,12 @@ jobs:
           - 1.29.8-focal
           - 1.29.8-bionic
         include:
+          - DOCKER_TAG: 1.29.12-focal
+            IMAGE_BASE: buildpack-deps:focal
+            RVM_VERSION: 1.29.12
+          - DOCKER_TAG: 1.29.11-bionic
+            IMAGE_BASE: buildpack-deps:bionic
+            RVM_VERSION: 1.29.11
           - DOCKER_TAG: 1.29.10-focal
             IMAGE_BASE: buildpack-deps:focal
             RVM_VERSION: 1.29.10

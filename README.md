@@ -4,6 +4,10 @@
 
 ## Supported tags and respective `Dockerfile` links
 
+* `1.29.12-focal`
+* `1.29.12-bionic`
+* `1.29.11-focal`
+* `1.29.11-bionic`
 * `1.29.10-focal`
 * `1.29.10-bionic`
 * `1.29.9-focal`
